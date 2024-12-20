@@ -20,5 +20,5 @@ jobs:  # Define the jobs to run
                 python-version: '3.9'  # Specify Python version
             - name: Install dependencies  # Step to install required packages
               run: pip install -r requirements.txt  # Install packages from requirements.txt
-            - name: Run Flask application  # Step to start the Flask app
-              run: python cses.py  # Execute the Flask application
+            - name: Run tests  # Execute the Flask application
+              run: python test_cses.py
