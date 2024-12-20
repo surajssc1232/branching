@@ -1,20 +1,24 @@
-name: my-workflow
+name: CI  # Name of the workflow
 
-on:
-  push:
-    branches: [master]
+on:  # Define when this workflow should run
+    push:  # Trigger on push events
+        branches: [master]  # Only for the master branch
+    pull_request:  # Trigger on pull request events
+        branches: [master]  # Only for the master branch
 
-jobs:
-  my_job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-      - name: Run Flask application
-        run: python cses.py
+
+
+jobs:  # Define the jobs to run
+    my_job:  # Name of the job
+        runs-on: windows-latest  # Specify the runner environment
+        steps:  # List of steps to execute
+            - name: Checkout code  # Step to fetch repository code
+              uses: actions/checkout@v3  # Use GitHub's checkout action
+            - name: set up python  # Step to setup Python environment
+              uses: actions/setup-python@v4  # Use GitHub's Python setup action
+              with:
+                python-version: '3.9'  # Specify Python version
+            - name: Install dependencies  # Step to install required packages
+              run: pip install -r requirements.txt  # Install packages from requirements.txt
+            - name: Run Flask application  # Step to start the Flask app
+              run: python cses.py  # Execute the Flask application
